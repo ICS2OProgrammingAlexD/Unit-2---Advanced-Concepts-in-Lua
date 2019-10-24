@@ -26,7 +26,7 @@ local scene = composer.newScene( sceneName )
 local beetleship
 local scrollXSpeed = 8
 local scrollYSpeed = -3
-local jungleSounds = audio.loadSound("Sounds/animals144.mp3")
+local jungleSounds = audio.loadSound("Sounds/Intro.mp3")
 local jungleSoundsChannel
 
 --------------------------------------------------------------------------------------------

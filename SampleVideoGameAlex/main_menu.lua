@@ -55,7 +55,7 @@ end
 
 -- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
 local function InstructionsTransition( )
-    composer.gotoScene("instructions", {effect = "slideright", time = 1000})
+    composer.gotoScene("instructions", {effect = "zoomInOutFade", time = 1000})
 end
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -99,6 +99,9 @@ function scene:create( event )
             -- Insert the images here
             defaultFile = "Images/Start Button Unpressed.png",
             overFile = "Images/Start Button Pressed.png",
+            -- height and width
+          width = 150,
+          height = 50,
 
             -- When the button is released, call the Level1 screen transition function
             onRelease = Level1ScreenTransition          
@@ -116,6 +119,9 @@ function scene:create( event )
             -- Insert the images here
             defaultFile = "Images/Credits Button Unpressed.png",
             overFile = "Images/Credits Button Pressed.png",
+            -- height and width
+          width = 150,
+          height = 50,
 
             -- When the button is released, call the Credits transition function
             onRelease = CreditsTransition
@@ -126,21 +132,25 @@ function scene:create( event )
     instructionsButton = widget.newButton(
         {
           -- set x/y of button
-          x = display.contentWidth/8
-          y = display.contentHeight*2/3
+          x = display.contentWidth/8,
+          y = display.contentHeight*2/3,
+
+          -- height and width
+          width = 150,
+          height = 50,
 
           -- Insert the images here
-          defaultFile = "Images/Instructions Button.png"
-          overFile = "Images/Instructions Button Pressed.png"
+          defaultFile = "Images/Instructions Button.png",
+          overFile = "Images/Instructions Button Pressed.png",
 
           -- when button is released, call the instructions transition function  
-          onRelease = InstructionsTransition
-        } )
+          onRelease = InstructionsTransition} )
     -----------------------------------------------------------------------------------------
 
     -- Associating button widgets with this scene
     sceneGroup:insert( playButton )
     sceneGroup:insert( creditsButton )
+    sceneGroup:insert( instructionsButton)
     
     -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
 

@@ -106,6 +106,7 @@ local function DisplayAnswers( )
     answerTextObject.text = tostring( answer )
     wrongAnswer1TextObject.text = tostring( wrongAnswer1 )
     wrongAnswer2TextObject.text = tostring( wrongAnswer2 )
+    wrongAnswer3TextObject.text = tostring( wrongAnswer3 )
 
     if (answerPosition == 1) then                
         
@@ -121,12 +122,17 @@ local function DisplayAnswers( )
         wrongAnswer2TextObject.x = display.contentWidth*.1
         wrongAnswer3TextObject.x = display.contentWidth*.4
 
-    else
+    elseif (answerPosition == 3) then
        
         answerTextObject.x = display.contentWidth*.1        
         wrongAnswer1TextObject.x = display.contentWidth*.4
         wrongAnswer2TextObject.x = display.contentWidth*.3
         wrongAnswer3TextObject.x = display.contentWidth*.2
+    else
+        answerTextObject.x = display.contentWidth*.4
+        wrongAnswer1TextObject.x = display.contentWidth*.1
+        wrongAnswer2TextObject.x = display.contentWidth*.2
+        wrongAnswer3TextObject.x = display.contentWidth*.3
     end
 
 end

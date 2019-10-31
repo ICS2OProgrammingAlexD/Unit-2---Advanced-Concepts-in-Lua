@@ -142,6 +142,10 @@ local function LoseScreenTransition( )
     composer.gotoScene( "you_lose", {effect = "zoomInOutFade", time = 1000})
 end 
 
+-- function that transitions to win screen
+local function WinScreenTransition(  )
+    composer.gotoscene("youWin", {effect="fromRight", time= 1000})
+end
 -- The function that displays the equation and determines the answer and the wrong answers
 local function DisplayAddEquation()
     -- local variables to this function
@@ -165,15 +169,23 @@ local function RestartScene()
 
     alreadyClickedAnswer = false
     correct.isVisible = false
+    incorrect.isVisible = false
 
     livesText.text = "Number of lives = " .. tostring(lives)
     numberCorrectText.text = "Number correct = " .. tostring(numberCorrect)
 
     -- if they have 0 lives, go to the You Lose screen
     if (lives == 0) then
-        composer.gotoScene("you_lose")
+        composer.gotoScene("you_lose", {effect="fromRight", time=1000})
     else 
 
+        DisplayAddEquation()
+        DetermineAnswers()
+        DisplayAnswers()
+    end
+    if (numberCorrect == 3) then
+        composer.gotoScene("youWin", {effect="fromRight", time= 1000})
+    else
         DisplayAddEquation()
         DetermineAnswers()
         DisplayAnswers()

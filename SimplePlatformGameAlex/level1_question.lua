@@ -41,10 +41,12 @@ local secondNumber
 local answer
 local wrongAnswer1
 local wrongAnswer2
+local wrongAnswer3
 
 local answerText 
 local wrongAnswerText1
 local wrongAnswerText2
+local wrongAnswerText3
 
 local answerPosition = 1
 local bkg
@@ -83,7 +85,7 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer(touch)
-    userAnswer = wrongText1.text
+    userAnswer = wrongAnswerText1.text
     
     if (touch.phase == "ended") then
         
@@ -95,7 +97,7 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer2(touch)
-    userAnswer = wrongText2.text
+    userAnswer = wrongAnswerText2.text
     
     if (touch.phase == "ended") then
 
@@ -108,15 +110,15 @@ end
 --adding the event listeners 
 local function AddTextListeners ( )
     answerText:addEventListener( "touch", TouchListenerAnswer )
-    wrongText1:addEventListener( "touch", TouchListenerWrongAnswer)
-    wrongText2:addEventListener( "touch", TouchListenerWrongAnswer2)
+    wrongAnswerText1:addEventListener( "touch", TouchListenerWrongAnswer)
+    wrongAnswerText2:addEventListener( "touch", TouchListenerWrongAnswer2)
 end
 
 --removing the event listeners
 local function RemoveTextListeners()
     answerText:removeEventListener( "touch", TouchListenerAnswer )
-    wrongText1:removeEventListener( "touch", TouchListenerWrongAnswer)
-    wrongText2:removeEventListener( "touch", TouchListenerWrongAnswer2)
+    wrongAnswerText1:removeEventListener( "touch", TouchListenerWrongAnswer)
+    wrongAnswerText2:removeEventListener( "touch", TouchListenerWrongAnswer2)
 end
 
 local function DisplayQuestion()
@@ -139,25 +141,29 @@ local function DisplayQuestion()
     answerText.text = answer
     
     --creating wrong answers
-    wrongText1.text = wrongAnswer1
-    wrongText2.text = wrongAnswer2
+    wrongAnswerText1.text = wrongAnswer1
+    wrongAnswerText2.text = wrongAnswer2
 end
 
 local function PositionAnswers()
 
     --creating random start position in a cretain area
-    answerPosition = math.random(1,3)
+    answerPosition = math.random(1,4)
 
     if (answerPosition == 1) then
 
         answerText.x = X1
         answerText.y = Y1
         
-        wrongText1.x = X2
-        wrongText1.y = Y1
+        wrongAnswerText1.x = X2
+        wrongAnswerText1.y = Y1
         
-        wrongText2.x = X1
-        wrongText2.y = Y2
+        wrongAnswerText2.x = X1
+        wrongAnswerText2.y = Y2
+
+        wrongAnswerText3.x = X2
+        wrongAnswerText3.y = Y2
+
 
         
     elseif (answerPosition == 2) then
@@ -165,11 +171,14 @@ local function PositionAnswers()
         answerText.x = X1
         answerText.y = Y2
             
-        wrongText1.x = X1
-        wrongText1.y = Y1
+        wrongAnswerText1.x = X1
+        wrongAnswerText1.y = Y1
             
-        wrongText2.x = X2
-        wrongText2.y = Y1
+        wrongAnswerText2.x = X2
+        wrongAnswerText2.y = Y1
+
+        wrongAnswerText3.x = X2
+        wrongAnswerText3.y = Y2
 
 
     elseif (answerPosition == 3) then
@@ -177,12 +186,27 @@ local function PositionAnswers()
         answerText.x = X2
         answerText.y = Y1
             
-        wrongText1.x = X1
-        wrongText1.y = Y2
+        wrongAnswerText1.x = X1
+        wrongAnswerText1.y = Y2
             
-        wrongText2.x = X1
-        wrongText2.y = Y1
+        wrongAnswerText2.x = X1
+        wrongAnswerText2.y = Y1
+
+        wrongAnswerText3.x = X2
+        wrongAnswerText3.y = Y2
             
+    elseif (answerPosition == 4) then
+        answerText.x = X2
+        answerText.y = Y2
+
+        wrongAnswerText1.x = X
+        wrongAnswerText1.y = 
+
+        wrongAnswerText2.x =
+        wrongAnswerText2.y =
+
+        wrongAnswerText3.x =
+        wrongAnswerText3.y =
     end
 end
 
@@ -214,10 +238,12 @@ function scene:create( event )
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("", X1, Y2, Arial, 75)
     answerText.anchorX = 0
-    wrongText1 = display.newText("", X2, Y2, Arial, 75)
-    wrongText1.anchorX = 0
-    wrongText2 = display.newText("", X1, Y1, Arial, 75)
-    wrongText2.anchorX = 0
+    wrongAnswerText1 = display.newText("", X2, Y2, Arial, 75)
+    wrongAnswerText1.anchorX = 0
+    wrongAnswerText2 = display.newText("", X1, Y1, Arial, 75)
+    wrongAnswerText2.anchorX = 0
+    wrongAnswerText3 = display.newText("", X2, Y1, Arial, 75)
+    wrongAnswerText3.anchorX = 0
 
     -----------------------------------------------------------------------------------------
 
@@ -226,8 +252,9 @@ function scene:create( event )
     sceneGroup:insert(cover)
     sceneGroup:insert(questionText)
     sceneGroup:insert(answerText)
-    sceneGroup:insert(wrongText1)
-    sceneGroup:insert(wrongText2)
+    sceneGroup:insert(wrongAnswerText1)
+    sceneGroup:insert(wrongAnswerText2)
+    sceneGroup:insert(wrongAnswerText3)
 
 
 end --function scene:create( event )

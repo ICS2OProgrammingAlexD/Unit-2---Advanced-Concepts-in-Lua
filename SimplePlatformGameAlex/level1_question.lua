@@ -106,12 +106,21 @@ local function TouchListenerWrongAnswer2(touch)
     end 
 end
 
+-- checking to see if the user pressed the right answer and bring them back to level 1
+local function TouchListenerWrongAnswer3( touch )
+    userAnswer = wrongAnswerText3.text 
+
+    if (touch.phase == "ended") then
+        BackToLevel1()
+    end
+end
 
 --adding the event listeners 
 local function AddTextListeners ( )
     answerText:addEventListener( "touch", TouchListenerAnswer )
     wrongAnswerText1:addEventListener( "touch", TouchListenerWrongAnswer)
     wrongAnswerText2:addEventListener( "touch", TouchListenerWrongAnswer2)
+    wrongAnswerText3:addEventListener("touch", TouchListenerWrongAnswer3)
 end
 
 --removing the event listeners
@@ -119,6 +128,7 @@ local function RemoveTextListeners()
     answerText:removeEventListener( "touch", TouchListenerAnswer )
     wrongAnswerText1:removeEventListener( "touch", TouchListenerWrongAnswer)
     wrongAnswerText2:removeEventListener( "touch", TouchListenerWrongAnswer2)
+    wrongAnswerText3:removeEventListener( "touch", TouchListenerWrongAnswer3)
 end
 
 local function DisplayQuestion()
@@ -132,6 +142,7 @@ local function DisplayQuestion()
     -- calculate wrong answers
     wrongAnswer1 = answer + math.random(1, 3)
     wrongAnswer2 = answer + math.random(4, 6)
+    wrongAnswer3 = answer + math.random(7, 9)
 
 
     --creating the question depending on the selcetion number
@@ -143,6 +154,8 @@ local function DisplayQuestion()
     --creating wrong answers
     wrongAnswerText1.text = wrongAnswer1
     wrongAnswerText2.text = wrongAnswer2
+    wrongAnswerText3.text = wrongAnswer3
+
 end
 
 local function PositionAnswers()
@@ -155,11 +168,11 @@ local function PositionAnswers()
         answerText.x = X1
         answerText.y = Y1
         
-        wrongAnswerText1.x = X2
-        wrongAnswerText1.y = Y1
+        wrongAnswerText1.x = X1
+        wrongAnswerText1.y = Y2
         
-        wrongAnswerText2.x = X1
-        wrongAnswerText2.y = Y2
+        wrongAnswerText2.x = X2
+        wrongAnswerText2.y = Y1
 
         wrongAnswerText3.x = X2
         wrongAnswerText3.y = Y2
@@ -171,14 +184,14 @@ local function PositionAnswers()
         answerText.x = X1
         answerText.y = Y2
             
-        wrongAnswerText1.x = X1
-        wrongAnswerText1.y = Y1
+        wrongAnswerText1.x = X2
+        wrongAnswerText1.y = Y2
             
-        wrongAnswerText2.x = X2
+        wrongAnswerText2.x = X1
         wrongAnswerText2.y = Y1
 
         wrongAnswerText3.x = X2
-        wrongAnswerText3.y = Y2
+        wrongAnswerText3.y = Y1
 
 
     elseif (answerPosition == 3) then
@@ -187,26 +200,26 @@ local function PositionAnswers()
         answerText.y = Y1
             
         wrongAnswerText1.x = X1
-        wrongAnswerText1.y = Y2
-            
-        wrongAnswerText2.x = X1
-        wrongAnswerText2.y = Y1
+        wrongAnswerText1.y = Y1
 
-        wrongAnswerText3.x = X2
+        wrongAnswerText2.x = X2
+        wrongAnswerText2.y = Y2
+
+        wrongAnswerText3.x = X1
         wrongAnswerText3.y = Y2
             
     elseif (answerPosition == 4) then
         answerText.x = X2
         answerText.y = Y2
 
-        wrongAnswerText1.x = X
-        wrongAnswerText1.y = 
+        wrongAnswerText1.x = X1
+        wrongAnswerText1.y = Y1
 
-        wrongAnswerText2.x =
-        wrongAnswerText2.y =
+        wrongAnswerText2.x = X2
+        wrongAnswerText2.y = Y1
 
-        wrongAnswerText3.x =
-        wrongAnswerText3.y =
+        wrongAnswerText3.x = X1
+        wrongAnswerText3.y = Y2
     end
 end
 

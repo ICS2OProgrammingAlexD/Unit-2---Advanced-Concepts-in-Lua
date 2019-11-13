@@ -69,9 +69,22 @@ local userAnswerBoxPlaceholder
 local correctSound
 local booSound
 
+-- background music
+local bkgMusic = audio.loadStream("Sounds/bkgMusic.mp3")
+local bkgMusicChannel
+
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
+-- Play music
+local function PlayMusic(  )
+    bkgMusicChannel = audio.play(bkgMusic)
+end
+
+-- Stop music
+local function StopMusic(  )
+    bkgMusicChannel = audio.stop(bkgMusic)
+end
 
 local function DisplayQuestion()
     local randomNumber1
@@ -426,6 +439,7 @@ function scene:show( event )
         -- Example: start timers, begin animation, play audio, etc.
         RestartLevel1()
         AddAnswerBoxEventListeners() 
+        PlayMusic()
 
     end
 
@@ -454,6 +468,7 @@ function scene:hide( event )
         -- Called immediately after scene goes off screen.
         audio.stop()
         RemoveAnswerBoxEventListeners()
+        StopMusic()
     end
 
 end --function scene:hide( event )

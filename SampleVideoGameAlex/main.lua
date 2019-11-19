@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- main.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Alex De Meo
+-- Date: Nov. 8, 2019
 -- Description: This calls the splash screen of the app to load itself.
 -----------------------------------------------------------------------------------------
 

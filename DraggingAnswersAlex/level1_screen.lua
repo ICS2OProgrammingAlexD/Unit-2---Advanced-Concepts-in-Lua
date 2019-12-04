@@ -202,6 +202,9 @@ local function PositionAnswers()
         --alternateAnswerBox1
         alternateAnswerBox1.y = display.contentHeight * 0.4
 
+        -- alternateAnswerBox3
+        alternateAnswerBox3.y = display.contentHeight * 0.85
+
         --remembering their positions to return the answer in case it's wrong
         alternateAnswerBox1PreviousY = alternateAnswerBox1.y
         alternateAnswerBox2PreviousY = alternateAnswerBox2.y
@@ -231,7 +234,8 @@ end
 local function TouchListenerAnswerbox(touch)
     --only work if none of the other boxes have been touched
     if (alternateAnswerBox1AlreadyTouched == false) and 
-        (alternateAnswerBox2AlreadyTouched == false) then
+        (alternateAnswerBox2AlreadyTouched == false) and
+        (alternateAnswerBox3AlreadyTouched == false) then
 
         if (touch.phase == "began") then
 

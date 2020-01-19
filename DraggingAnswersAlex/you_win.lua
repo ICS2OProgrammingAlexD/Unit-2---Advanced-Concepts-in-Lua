@@ -27,24 +27,10 @@ sceneName = "you_win"
 local scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
 
 -----------------------------------------------------------------------------------------
--- LOCAL VARIABLES
+-- DISPLAY OBJECTS
 -----------------------------------------------------------------------------------------
 local bkg_image
-local winSound = audio.loadStream("Sounds/yabbadabbalaugh.wav")
-local winSoundChannel
-
------------------------------------------------------------------------
--- LOCAL FUNCTIONS
-------------------------------------------------------------------------
--- plays music
-local function PlayMusic(  )
-    winSoundChannel = audio.play(winSound)
-end
-
--- stops music
-local function StopSound(  )
-    winSoundChannel = audio.pause(winSound)
-end
+local winSound = audio.loadSound("Sounds/yabbadabbalaugh.wav")
 
 -- The function called when the screen doesn't exist
 function scene:create( event )
@@ -89,7 +75,7 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-        PlayMusic()
+        audio.play(winSound)
     end
 
 end -- function scene:show( event )
@@ -117,7 +103,6 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
-        StopSound()
     end
 
 end --function scene:hide( event )

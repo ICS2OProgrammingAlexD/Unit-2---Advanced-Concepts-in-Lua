@@ -1,10 +1,9 @@
 -----------------------------------------------------------------------------------------
 --
--- credits_screen.lua
--- Created by: Daniel Lopez-Carreon
--- Updated by: Alex De Meo  Jan 19/2020s
--- Date: Nov. 24th, 2014
--- Description: This is the you win screen
+-- you_lose.lua
+-- Created by: Alex De Meo
+-- Date: Jan 19/2020
+-- Description: This is the you lose screen
 -----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
